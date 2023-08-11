@@ -4,23 +4,22 @@ plugins {
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.2"
+    compileSdk 28
+    namespace "top.niunaijun.blackboxa"
 
     defaultConfig {
         applicationId "top.niunaijun.blackboxa"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdk 21
+        targetSdk 28
         versionCode 2
         versionName "1.1.0"
-
-        flavorDimensions "BlackBox32"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "channel"
     productFlavors {
         BlackBox32 {
+            dimension "channel"
             applicationId "top.niunaijun.blackboxa32"
             ndk {
                 abiFilters "armeabi-v7a"
@@ -29,6 +28,7 @@ android {
         }
 
         BlackBox64 {
+            dimension "channel"
             applicationId "top.niunaijun.blackboxa64"
             ndk {
                 abiFilters "arm64-v8a"
@@ -39,8 +39,8 @@ android {
 
     buildTypes {
         debug {
-//            debuggable false
-            jniDebuggable false
+            debuggable true
+            jniDebuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -51,7 +51,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 
